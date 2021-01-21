@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint 'src/*.{js,jsx,ts,tsx}' -- --fix",
+    "format": "prettier 'src/*.{js,json,md} --write'"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,9 @@
     }
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix"
+    "*.js": [
+      "npm run lint && npm run format",
+      "git add"
+    ]
   }
 }
